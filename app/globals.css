@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body { background: #050912; }
+body {
+  color: #e2e8f0;
+  font-family: Inter, system-ui, sans-serif;
+  background-image:
+    radial-gradient(900px 480px at 85% -10%, rgba(47,139,255,0.14), transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, rgba(24,255,138,0.07), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-ink-800/60 backdrop-blur-md;
+  }
+  .card { @apply glass p-4 md:p-5 transition-colors duration-200; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary { @apply btn bg-electric text-white hover:brightness-110 shadow-glow; }
+  .btn-ghost { @apply btn border border-white/15 text-slate-200 hover:bg-white/5; }
+  .btn-danger { @apply btn bg-loss/90 text-white hover:brightness-110; }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-900/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 outline-none focus:border-electric focus:ring-1 focus:ring-electric;
+  }
+  .label { @apply mb-1 block text-xs font-medium uppercase tracking-wide text-slate-400; }
+  .th { @apply px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400; }
+  .td { @apply px-3 py-2.5 text-sm; }
+  .badge { @apply inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide; }
+}
+
+.fade-in { animation: fade 0.35s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
